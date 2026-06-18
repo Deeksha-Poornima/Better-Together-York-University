@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Better Together — Student Wellness Email Campaign</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#4a7c59;
+  --forest-light:#e6f0ea;
+  --forest-mid:#b5d0be;
+  --sky:#e8f2f8;
+  --sky-dark:#b8d4e4;
+  --sky-mid:#d0e5f0;
+  --sand:#f2ede6;
+  --sand-dark:#e0d8ce;
+  --sun:#f5c842;
+  --sun-light:#fdf4d0;
+  --warm-white:#faf9f7;
+  --white:#ffffff;
+  --charcoal:#2c2c2a;
+  --mid:#6b6b67;
+  --light:#a8a8a3;
+  --blush:#e8d5cb;
+  --blush-dark:#d4b9ad;
+  --lavender:#ede8f5;
+  --lavender-dark:#c8bde8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#e5ede8;font-family:'DM Sans',sans-serif;min-height:100vh;}
+
+/* NAV */
+.portfolio-nav{background:var(--charcoal);padding:0;display:flex;align-items:stretch;position:sticky;top:0;z-index:100;border-bottom:1px solid #3a3a38;}
+.nav-brand{padding:16px 28px;border-right:1px solid #3a3a38;display:flex;flex-direction:column;justify-content:center;min-width:220px;}
+.nav-brand .logo{font-family:'DM Serif Display',serif;font-size:17px;color:#faf9f7;letter-spacing:.5px;}
+.nav-brand .sub{font-size:10px;color:#555552;letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.nav-tabs{display:flex;flex:1;}
+.nav-tab{padding:16px 22px;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;color:#555552;letter-spacing:.08em;text-transform:uppercase;font-weight:500;transition:all .2s;border-right:1px solid #3a3a38;display:flex;flex-direction:column;gap:3px;white-space:nowrap;}
+.nav-tab:hover{background:#333330;color:#aaa;}
+.nav-tab.active{background:#302e2c;color:var(--forest);border-bottom:2px solid var(--forest);}
+.nav-tab .tnum{font-family:'DM Serif Display',serif;font-size:20px;line-height:1;color:inherit;opacity:.4;}
+.nav-tab.active .tnum{opacity:1;}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:40px 32px;}
+.panel{display:none;}
+.panel.active{display:grid;grid-template-columns:1fr 390px;gap:32px;align-items:start;}
+
+/* BRIEF COL */
+.brief-col{position:sticky;top:72px;}
+.brief-card{background:var(--charcoal);border-radius:10px;padding:28px;margin-bottom:16px;}
+.brief-tag{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--forest);margin-bottom:12px;font-weight:500;}
+.brief-subject{font-family:'DM Serif Display',serif;font-size:21px;color:#faf9f7;line-height:1.3;margin-bottom:6px;}
+.brief-preview{font-size:12px;color:#555552;font-style:italic;margin-bottom:20px;line-height:1.5;}
+.brief-divider{height:1px;background:#3a3a38;margin:16px 0;}
+.brief-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#555552;margin-bottom:8px;font-weight:500;}
+.brief-obj{font-size:13px;color:#888884;line-height:1.65;}
+.brief-directions{display:flex;flex-direction:column;gap:6px;}
+.brief-dir{display:flex;align-items:center;gap:8px;font-size:12px;color:#666660;}
+.brief-dir::before{content:'';display:block;width:3px;height:3px;border-radius:50%;background:var(--forest);flex-shrink:0;}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;}
+.meta-chip{font-size:10px;padding:4px 10px;border:1px solid #3a3a38;border-radius:20px;color:#555552;letter-spacing:.06em;}
+
+/* EMAIL FRAME */
+.email-frame{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 2px 40px rgba(0,0,0,.10);border:1px solid var(--sand-dark);}
+.inbox-bar{background:var(--warm-white);border-bottom:1px solid var(--sand-dark);padding:12px 18px;display:flex;align-items:center;gap:12px;}
+.inbox-avatar{width:30px;height:30px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:13px;color:#fff;flex-shrink:0;}
+.inbox-from{flex:1;}
+.inbox-from .from-name{font-size:12px;font-weight:600;color:var(--charcoal);}
+.inbox-from .from-addr{font-size:10px;color:var(--light);}
+.inbox-subject-line{font-size:11px;color:var(--mid);max-width:210px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* ════ EMAIL 1 — YOU'RE NOT ALONE ════ */
+.e1-topbar{background:var(--charcoal);padding:14px 26px;display:flex;justify-content:space-between;align-items:center;}
+.e1-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--warm-white);letter-spacing:.5px;}
+.e1-nav{display:flex;gap:16px;}
+.e1-nav a{font-size:10px;color:rgba(250,249,247,.35);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;}
+.e1-hero{background:var(--forest-light);position:relative;overflow:hidden;}
+.e1-hero-inner{height:260px;display:flex;align-items:center;justify-content:center;position:relative;}
+.e1-hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:22px 26px;background:linear-gradient(to top,rgba(44,44,42,.5) 0%,transparent 100%);z-index:2;}
+.e1-hero-overlay h1{font-family:'DM Serif Display',serif;font-size:26px;color:#fff;font-weight:400;line-height:1.3;font-style:italic;}
+.e1-body{background:var(--white);padding:28px 26px;}
+.e1-greeting{font-size:14px;color:var(--mid);line-height:1.85;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--sand-dark);}
+.e1-greeting em{font-family:'DM Serif Display',serif;font-size:17px;color:var(--charcoal);font-style:italic;}
+.e1-journey-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin-bottom:16px;font-weight:500;}
+.e1-journey{display:flex;flex-direction:column;gap:0;margin-bottom:24px;}
+.e1-step{display:flex;gap:14px;align-items:flex-start;}
+.e1-step-left{display:flex;flex-direction:column;align-items:center;width:28px;flex-shrink:0;}
+.e1-step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;}
+.e1-step-dot.active{background:var(--forest);color:#fff;}
+.e1-step-dot.upcoming{background:var(--sand-dark);color:var(--light);}
+.e1-step-line{width:1px;flex:1;min-height:22px;background:var(--sand-dark);margin:4px 0;}
+.e1-step-content{padding:4px 0 18px;}
+.e1-step-content .sttitle{font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:2px;}
+.e1-step-content .stdesc{font-size:12px;color:var(--light);line-height:1.55;}
+.e1-step-content .stweek{font-size:10px;color:var(--forest);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;}
+.e1-offer{background:var(--forest-light);border:1px solid var(--forest-mid);border-radius:6px;padding:18px;text-align:center;margin-bottom:22px;}
+.e1-offer .obadge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:4px;font-weight:500;}
+.e1-offer .omain{font-family:'DM Serif Display',serif;font-size:20px;color:var(--charcoal);margin-bottom:6px;line-height:1.3;}
+.e1-offer .osub{font-size:12px;color:var(--mid);margin-bottom:12px;line-height:1.5;}
+.e1-cta-wrap{text-align:center;}
+.e1-cta{display:inline-block;background:var(--forest);color:#fff;font-size:12px;font-weight:500;padding:14px 36px;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;}
+.e1-footer{background:var(--charcoal);padding:20px 26px;text-align:center;}
+.e1-footer .flogo{font-family:'DM Serif Display',serif;font-size:16px;color:var(--warm-white);letter-spacing:.5px;margin-bottom:8px;opacity:.55;}
+.e1-footer p{font-size:10px;color:#3a3a38;line-height:1.8;}
+.e1-footer a{color:#555552;}
+
+/* ════ EMAIL 2 — OUTDOOR ACTIVITY ════ */
+.e2-topbar{background:var(--white);padding:14px 26px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--sand-dark);}
+.e2-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--charcoal);}
+.e2-nav a{font-size:10px;color:var(--light);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;margin-left:16px;}
+.e2-hero{background:var(--forest-light);padding:36px 26px;text-align:center;position:relative;overflow:hidden;}
+.e2-hero-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest);margin-bottom:10px;font-weight:500;}
+.e2-hero h1{font-family:'DM Serif Display',serif;font-size:26px;color:var(--charcoal);font-style:italic;line-height:1.35;margin-bottom:12px;}
+.e2-hero-rule{width:40px;height:1px;background:var(--forest-mid);margin:0 auto;}
+.e2-body{padding:26px 26px;background:var(--white);}
+.e2-body p{font-size:13px;color:var(--mid);line-height:1.85;margin-bottom:16px;}
+.e2-body em{font-family:'DM Serif Display',serif;font-size:16px;color:var(--charcoal);font-style:italic;}
+.e2-event-box{background:var(--forest-light);border:1px solid var(--forest-mid);border-radius:6px;padding:18px;margin-bottom:20px;}
+.e2-event-box .evlabel{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);margin-bottom:12px;font-weight:500;}
+.e2-event-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;color:var(--charcoal);}
+.e2-event-row:last-child{margin:0;}
+.e2-event-icon{font-size:16px;flex-shrink:0;width:22px;text-align:center;}
+.e2-activities{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.e2-activity{border:1px solid var(--sand-dark);border-radius:5px;padding:12px;text-align:center;}
+.e2-activity .aicon{font-size:24px;margin-bottom:6px;}
+.e2-activity .aname{font-size:12px;font-weight:600;color:var(--charcoal);margin-bottom:2px;}
+.e2-activity .adesc{font-size:10px;color:var(--light);}
+.e2-cta-wrap{text-align:center;margin-bottom:0;}
+.e2-cta{display:inline-block;background:var(--forest);color:#fff;font-size:12px;font-weight:500;padding:14px 36px;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;}
+.e2-footer{background:var(--charcoal);padding:18px 26px;text-align:center;}
+.e2-footer p{font-size:10px;color:#3a3a38;line-height:1.8;}
+
+/* ════ EMAIL 3 — GROUP CIRCLE ════ */
+.e3-topbar{background:var(--white);padding:14px 26px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--sand-dark);}
+.e3-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--charcoal);}
+.e3-nav a{font-size:10px;color:var(--light);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;margin-left:14px;}
+.e3-hero{background:var(--lavender);padding:32px 26px;text-align:center;}
+.e3-eyebrow{font-size:10px;letter-spacing:.18em;color:var(--lavender-dark);text-transform:uppercase;margin-bottom:8px;font-weight:500;}
+.e3-hero h1{font-family:'DM Serif Display',serif;font-size:24px;color:var(--charcoal);font-style:italic;margin-bottom:8px;line-height:1.3;}
+.e3-hero p{font-size:13px;color:var(--mid);line-height:1.6;}
+.e3-body{background:var(--white);padding:24px 26px;}
+.e3-body p{font-size:13px;color:var(--mid);line-height:1.85;margin-bottom:16px;}
+.e3-body em{font-family:'DM Serif Display',serif;font-size:16px;color:var(--charcoal);font-style:italic;}
+.e3-circle-meta{background:var(--lavender);border:1px solid var(--lavender-dark);border-radius:6px;padding:18px;margin-bottom:20px;}
+.e3-circle-meta .cmlabel{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;font-weight:500;}
+.e3-cm-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;color:var(--charcoal);}
+.e3-cm-row:last-child{margin:0;}
+.e3-cm-icon{font-size:15px;flex-shrink:0;width:22px;text-align:center;}
+.e3-values{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.e3-value{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--sand-dark);border-radius:5px;}
+.e3-value-icon{font-size:18px;flex-shrink:0;}
+.e3-value-text .vt{font-size:12px;font-weight:600;color:var(--charcoal);margin-bottom:1px;}
+.e3-value-text .vd{font-size:11px;color:var(--light);}
+.e3-quote{background:var(--charcoal);padding:26px 26px;text-align:center;}
+.e3-quote blockquote{font-family:'DM Serif Display',serif;font-size:18px;color:var(--warm-white);font-style:italic;line-height:1.6;margin-bottom:10px;}
+.e3-quote cite{font-size:11px;color:var(--forest);letter-spacing:.1em;text-transform:uppercase;}
+.e3-cta-wrap{padding:22px 26px;text-align:center;background:var(--white);}
+.e3-cta{display:inline-block;background:var(--forest);color:#fff;font-size:12px;font-weight:500;padding:14px 36px;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;}
+.e3-footer{background:var(--charcoal);padding:16px 26px;text-align:center;}
+.e3-footer p{font-size:10px;color:#3a3a38;line-height:1.8;}
+
+/* ════ EMAIL 4 — SIGN ME UP (URGENCY) ════ */
+.e4-topbar{background:var(--forest);padding:12px 26px;display:flex;justify-content:space-between;align-items:center;}
+.e4-logo{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;}
+.e4-nudge-banner{background:var(--charcoal);padding:10px 26px;text-align:center;}
+.e4-nudge-banner p{font-size:11px;color:rgba(250,249,247,.55);letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-bottom:4px;}
+.e4-spots{display:flex;justify-content:center;gap:6px;}
+.e4-spot{width:12px;height:12px;border-radius:50%;}
+.e4-spot.taken{background:rgba(255,255,255,.15);}
+.e4-spot.open{background:var(--forest);}
+.e4-hero{background:var(--blush);padding:32px 26px;text-align:center;}
+.e4-eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blush-dark);margin-bottom:10px;font-weight:500;}
+.e4-hero h1{font-family:'DM Serif Display',serif;font-size:26px;color:var(--charcoal);font-style:italic;line-height:1.3;margin-bottom:10px;}
+.e4-hero p{font-size:13px;color:var(--mid);margin-bottom:22px;line-height:1.65;}
+.e4-cta-primary{display:inline-block;background:var(--forest);color:#fff;font-size:12px;font-weight:500;padding:14px 38px;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;}
+.e4-body{background:var(--white);padding:22px 26px;}
+.e4-testimony{background:var(--sand);border-radius:6px;padding:18px;margin-bottom:18px;}
+.e4-testimony .tlabel{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:12px;font-weight:500;}
+.e4-testi{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--sand-dark);}
+.e4-testi:last-child{margin:0;padding:0;border:none;}
+.e4-testi .tstars{font-size:11px;color:var(--sun);margin-bottom:4px;}
+.e4-testi .ttext{font-size:12px;color:var(--mid);line-height:1.55;font-style:italic;margin-bottom:4px;}
+.e4-testi .tauthor{font-size:10px;color:var(--light);}
+.e4-reassure{background:var(--forest-light);border-left:3px solid var(--forest);border-radius:3px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;}
+.e4-reassure p{font-size:12px;color:var(--charcoal);line-height:1.6;}
+.e4-reassure p em{font-family:'DM Serif Display',serif;font-size:14px;font-style:italic;color:var(--forest);}
+.e4-upcoming-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:12px;font-weight:500;}
+.e4-upcoming{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.e4-event{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--sand-dark);border-radius:5px;}
+.e4-event-icon{font-size:18px;flex-shrink:0;}
+.e4-event-text .et{font-size:12px;font-weight:600;color:var(--charcoal);margin-bottom:1px;}
+.e4-event-text .ed{font-size:11px;color:var(--light);}
+.e4-final-cta{text-align:center;}
+.e4-final-cta a{display:inline-block;background:var(--forest);color:#fff;font-size:12px;font-weight:500;padding:14px 36px;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;width:100%;max-width:280px;border-radius:4px;}
+.e4-footer{background:var(--charcoal);padding:16px 26px;text-align:center;}
+.e4-footer p{font-size:10px;color:#3a3a38;line-height:1.8;}
+.e4-footer a{color:#555552;}
+</style>
+</head>
+<body>
+
+<nav class="portfolio-nav">
+  <div class="nav-brand">
+    <div class="logo">Better Together</div>
+    <div class="sub">Student Wellness Campaign</div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="show(1,this)"><span class="tnum">01</span>You're Not Alone</button>
+    <button class="nav-tab" onclick="show(2,this)"><span class="tnum">02</span>Get Outside</button>
+    <button class="nav-tab" onclick="show(3,this)"><span class="tnum">03</span>Join the Circle</button>
+    <button class="nav-tab" onclick="show(4,this)"><span class="tnum">04</span>Your Next Step</button>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- ══════════════ EMAIL 1 — YOU'RE NOT ALONE ══════════════ -->
+<div class="panel active" id="panel-1">
+  <div class="brief-col">
+    <div class="brief-card">
+      <div class="brief-tag">Email 01 &mdash; Welcome</div>
+      <div class="brief-subject">You're not alone in this 💙</div>
+      <div class="brief-preview">Moving away from home is big. We get it.</div>
+      <div class="brief-divider"></div>
+      <div class="brief-label">Objective</div>
+      <div class="brief-obj" style="margin-bottom:16px">Emotionally connect with students who are living away from home for the first time. Validate the loneliness and overwhelm they may feel — and introduce Better Together as a warm, judgment-free community that genuinely gets it.</div>
+      <div class="brief-label">Design directions</div>
+      <div class="brief-directions">
+        <div class="brief-dir">Forest-green hero — calm, welcoming</div>
+        <div class="brief-dir">Journey roadmap teaser (4 steps)</div>
+        <div class="brief-dir">Soft offer block — no pressure tone</div>
+        <div class="brief-dir">Single CTA: Learn More</div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-chip">Day 1 — Campaign launch</span>
+      <span class="meta-chip">CTA: Learn More</span>
+      <span class="meta-chip">Awareness</span>
+    </div>
+  </div>
+  <div class="email-col">
+    <div class="email-frame">
+      <div class="inbox-bar">
+        <div class="inbox-avatar">BT</div>
+        <div class="inbox-from"><div class="from-name">Better Together</div><div class="from-addr">hello@bettertogether.ca</div></div>
+        <div class="inbox-subject-line">You're not alone in this 💙</div>
+      </div>
+      <div class="e1-topbar">
+        <div class="e1-logo">Better Together</div>
+        <div class="e1-nav"><a href="#">Events</a><a href="#">Community</a><a href="#">Resources</a></div>
+      </div>
+      <div class="e1-hero">
+        <div class="e1-hero-inner">
+          <svg width="100%" height="260" viewBox="0 0 390 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="390" height="260" fill="#e6f0ea"/>
+            <!-- Sky -->
+            <ellipse cx="310" cy="60" rx="55" ry="18" fill="#c8e0d0" opacity=".5"/>
+            <ellipse cx="80" cy="80" rx="38" ry="12" fill="#c8e0d0" opacity=".4"/>
+            <!-- Ground -->
+            <rect x="0" y="190" width="390" height="70" fill="#b5d0be" opacity=".45"/>
+            <!-- Trees -->
+            <rect x="60" y="120" width="10" height="72" fill="#4a7c59" opacity=".55"/>
+            <polygon points="65,60 40,125 90,125" fill="#4a7c59" opacity=".65"/>
+            <polygon points="65,80 44,130 86,130" fill="#5a8f6a" opacity=".5"/>
+            <rect x="290" y="135" width="8" height="57" fill="#4a7c59" opacity=".5"/>
+            <polygon points="294,82 272,140 316,140" fill="#4a7c59" opacity=".6"/>
+            <rect x="180" y="140" width="7" height="52" fill="#4a7c59" opacity=".4"/>
+            <polygon points="183,95 165,145 201,145" fill="#6aaa7a" opacity=".45"/>
+            <!-- Figures holding hands -->
+            <circle cx="170" cy="165" r="9" fill="#4a7c59" opacity=".7"/>
+            <line x1="170" y1="174" x2="170" y2="200" stroke="#4a7c59" stroke-width="3" opacity=".7"/>
+            <line x1="170" y1="182" x2="160" y2="192" stroke="#4a7c59" stroke-width="2.5" opacity=".7"/>
+            <line x1="170" y1="182" x2="181" y2="191" stroke="#4a7c59" stroke-width="2.5" opacity=".7"/>
+            <circle cx="200" cy="163" r="9" fill="#5a8f6a" opacity=".7"/>
+            <line x1="200" y1="172" x2="200" y2="200" stroke="#5a8f6a" stroke-width="3" opacity=".7"/>
+            <line x1="200" y1="180" x2="181" y2="191" stroke="#4a7c59" stroke-width="2.5" opacity=".7"/>
+            <line x1="200" y1="180" x2="210" y2="192" stroke="#5a8f6a" stroke-width="2.5" opacity=".7"/>
+            <circle cx="228" cy="167" r="9" fill="#4a7c59" opacity=".6"/>
+            <line x1="228" y1="176" x2="228" y2="200" stroke="#4a7c59" stroke-width="3" opacity=".6"/>
+            <line x1="228" y1="183" x2="210" y2="192" stroke="#5a8f6a" stroke-width="2.5" opacity=".6"/>
+            <line x1="228" y1="183" x2="238" y2="194" stroke="#4a7c59" stroke-width="2.5" opacity=".6"/>
+          </svg>
+          <div class="e1-hero-overlay">
+            <h1>The first step is<br>showing up. You did it.</h1>
+          </div>
+        </div>
+      </div>
+      <div class="e1-body">
+        <div class="e1-greeting">
+          Hey there — welcome to Better Together.<br><br>
+          <em>Moving away from home is one of the biggest changes you'll ever face.</em><br><br>
+          Missing your family. Navigating new friendships. Keeping up with classes while everything around you is unfamiliar. That restless, untethered feeling at the end of a long day — we know it well.<br><br>
+          Better Together was built for exactly this moment. No pressure, no judgment — just a community of students who genuinely get it.
+        </div>
+        <div class="e1-journey-label">What your journey looks like</div>
+        <div class="e1-journey">
+          <div class="e1-step">
+            <div class="e1-step-left"><div class="e1-step-dot active">1</div><div class="e1-step-line"></div></div>
+            <div class="e1-step-content"><div class="stweek">This week</div><div class="sttitle">Say Hello</div><div class="stdesc">Join us for a casual outdoor activity. No agenda, no awkward icebreakers — just fresh air and good company.</div></div>
+          </div>
+          <div class="e1-step">
+            <div class="e1-step-left"><div class="e1-step-dot upcoming">2</div><div class="e1-step-line"></div></div>
+            <div class="e1-step-content"><div class="stweek">Ongoing</div><div class="sttitle">Find Your People</div><div class="stdesc">Weekly group circles where you can share, listen, and feel genuinely heard by others who understand.</div></div>
+          </div>
+          <div class="e1-step">
+            <div class="e1-step-left"><div class="e1-step-dot upcoming">3</div><div class="e1-step-line"></div></div>
+            <div class="e1-step-content"><div class="stweek">Weekends</div><div class="sttitle">Get Outside Together</div><div class="stdesc">Hikes, picnics, campus walks — movement and nature are powerful medicine for a stressed-out mind.</div></div>
+          </div>
+          <div class="e1-step">
+            <div class="e1-step-left"><div class="e1-step-dot upcoming">4</div></div>
+            <div class="e1-step-content"><div class="stweek">Always</div><div class="sttitle">Feel at Home Again</div><div class="stdesc">Real belonging, built over time. That feeling you've been missing? It's closer than you think.</div></div>
+          </div>
+        </div>
+        <div class="e1-offer">
+          <div class="obadge">Our next event</div>
+          <div class="omain">Free to Attend &mdash;<br>No Sign-Up Pressure</div>
+          <div class="osub">All Better Together events are completely free. Show up whenever you're ready — once, twice, or every week. We'll be here.</div>
+        </div>
+        <div class="e1-cta-wrap"><a class="e1-cta" href="#">Learn More About Better Together</a></div>
+      </div>
+      <div class="e1-footer">
+        <div class="flogo">Better Together</div>
+        <p>hello@bettertogether.ca · Your university student wellness community<br>&copy; 2025 Better Together · <a href="#">Unsubscribe</a> · <a href="#">Privacy</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ EMAIL 2 — GET OUTSIDE ══════════════ -->
+<div class="panel" id="panel-2">
+  <div class="brief-col">
+    <div class="brief-card">
+      <div class="brief-tag">Email 02 &mdash; Activity Invite</div>
+      <div class="brief-subject">Hiking, picnics & good vibes this weekend 🌿</div>
+      <div class="brief-preview">Sometimes the best therapy is fresh air.</div>
+      <div class="brief-divider"></div>
+      <div class="brief-label">Objective</div>
+      <div class="brief-obj" style="margin-bottom:16px">Drive signups for an upcoming outdoor activity. Lead with the emotional benefit — lightness, connection, relief — before the logistics. Make it feel low-commitment and genuinely fun, not clinical or formal.</div>
+      <div class="brief-label">Design directions</div>
+      <div class="brief-directions">
+        <div class="brief-dir">Forest green hero — energetic, alive</div>
+        <div class="brief-dir">Event detail box — date, location, vibe</div>
+        <div class="brief-dir">Activity grid (4 types of outdoor events)</div>
+        <div class="brief-dir">Single CTA: Reserve My Spot</div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-chip">Day 3 — Activity invite</span>
+      <span class="meta-chip">CTA: Reserve My Spot</span>
+      <span class="meta-chip">Event signup</span>
+    </div>
+  </div>
+  <div class="email-col">
+    <div class="email-frame">
+      <div class="inbox-bar">
+        <div class="inbox-avatar">BT</div>
+        <div class="inbox-from"><div class="from-name">Better Together</div><div class="from-addr">hello@bettertogether.ca</div></div>
+        <div class="inbox-subject-line">Hiking, picnics & good vibes this weekend 🌿</div>
+      </div>
+      <div class="e2-topbar">
+        <div class="e2-logo">Better Together</div>
+        <div><a href="#" class="e2-nav">Events</a><a href="#" class="e2-nav">Community</a><a href="#" class="e2-nav">Resources</a></div>
+      </div>
+      <div class="e2-hero">
+        <div class="e2-hero-label">This Weekend</div>
+        <h1>Sometimes the best therapy<br>is fresh air and good company.</h1>
+        <div class="e2-hero-rule"></div>
+      </div>
+      <div class="e2-body">
+        <p>Hey [First Name],</p>
+        <p>We're heading outside this weekend — and we'd love for you to join us. <em>No agenda, no awkwardness.</em> Just a group of students getting some fresh air and reminding each other that life off-campus can be really, really good.</p>
+        <p>Past students say it's the highlight of their week. Spots are kept small so things stay cozy and comfortable.</p>
+        <div class="e2-event-box">
+          <div class="evlabel">This weekend's details</div>
+          <div class="e2-event-row"><div class="e2-event-icon">📅</div><div><strong>When:</strong> [Date &amp; Time]</div></div>
+          <div class="e2-event-row"><div class="e2-event-icon">📍</div><div><strong>Where:</strong> [Location — e.g. Humber Arboretum]</div></div>
+          <div class="e2-event-row"><div class="e2-event-icon">🎒</div><div><strong>Bring:</strong> Just yourself — we handle the rest</div></div>
+          <div class="e2-event-row"><div class="e2-event-icon">💰</div><div><strong>Cost:</strong> Completely free</div></div>
+        </div>
+        <p>We rotate through different outdoor activities each week:</p>
+        <div class="e2-activities">
+          <div class="e2-activity"><div class="aicon">🥾</div><div class="aname">Nature Hikes</div><div class="adesc">Local trails, easy pace</div></div>
+          <div class="e2-activity"><div class="aicon">🧺</div><div class="aname">Campus Picnics</div><div class="adesc">Blankets, snacks, good chats</div></div>
+          <div class="e2-activity"><div class="aicon">🚴</div><div class="aname">Bike Rides</div><div class="adesc">Explore the city together</div></div>
+          <div class="e2-activity"><div class="aicon">🌅</div><div class="aname">Sunrise Walks</div><div class="adesc">Start the day right</div></div>
+        </div>
+        <div class="e2-cta-wrap"><a class="e2-cta" href="#">Reserve My Spot &mdash; It's Free</a></div>
+      </div>
+      <div class="e2-footer"><p>&copy; 2025 Better Together · <a href="#" style="color:#555552">Unsubscribe</a> · <a href="#" style="color:#555552">Privacy</a></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ EMAIL 3 — JOIN THE CIRCLE ══════════════ -->
+<div class="panel" id="panel-3">
+  <div class="brief-col">
+    <div class="brief-card">
+      <div class="brief-tag">Email 03 &mdash; Group Meeting Invite</div>
+      <div class="brief-subject">A safe space to talk about how you're really doing 🤝</div>
+      <div class="brief-preview">Not the "I'm fine" answer. The real one.</div>
+      <div class="brief-divider"></div>
+      <div class="brief-label">Objective</div>
+      <div class="brief-obj" style="margin-bottom:16px">Invite students to the weekly Better Together Circle — a small, confidential group sharing session. Emphasise safety, zero pressure, and that first-timers are always welcome. A real student quote anchors the email with social proof.</div>
+      <div class="brief-label">Design directions</div>
+      <div class="brief-directions">
+        <div class="brief-dir">Lavender hero — intimate, reflective</div>
+        <div class="brief-dir">Session details box</div>
+        <div class="brief-dir">Four circle values (no judgment, safe, etc.)</div>
+        <div class="brief-dir">Real student quote in charcoal band</div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-chip">Day 6 — Circle invite</span>
+      <span class="meta-chip">CTA: Join the Circle</span>
+      <span class="meta-chip">Group signup</span>
+    </div>
+  </div>
+  <div class="email-col">
+    <div class="email-frame">
+      <div class="inbox-bar">
+        <div class="inbox-avatar">BT</div>
+        <div class="inbox-from"><div class="from-name">Better Together</div><div class="from-addr">hello@bettertogether.ca</div></div>
+        <div class="inbox-subject-line">A safe space to talk about how you're really doing</div>
+      </div>
+      <div class="e3-topbar">
+        <div class="e3-logo">Better Together</div>
+        <div><a href="#" class="e3-nav">Events</a><a href="#" class="e3-nav">Community</a><a href="#" class="e3-nav">Resources</a></div>
+      </div>
+      <div class="e3-hero">
+        <div class="e3-eyebrow">The Better Together Circle</div>
+        <h1>How are you actually doing?<br>Not the &ldquo;I&rsquo;m fine&rdquo; answer.</h1>
+        <p>A small group. Real conversations. A space where you don&rsquo;t have to hold it together.</p>
+      </div>
+      <div class="e3-body">
+        <p>Hey [First Name],</p>
+        <p>Our weekly Circle is a small group of students who get together to share what&rsquo;s really on their mind. Homesickness, stress, friendship stuff, academic pressure — <em>all of it belongs here.</em></p>
+        <p>No advice-giving unless you ask for it. No scripts, no worksheets. Just honest conversations with people who get it.</p>
+        <div class="e3-circle-meta">
+          <div class="cmlabel">Next session</div>
+          <div class="e3-cm-row"><div class="e3-cm-icon">📅</div><div><strong>When:</strong> [Date &amp; Time]</div></div>
+          <div class="e3-cm-row"><div class="e3-cm-icon">📍</div><div><strong>Where:</strong> [Location / Online link]</div></div>
+          <div class="e3-cm-row"><div class="e3-cm-icon">👥</div><div><strong>Size:</strong> Small group (8–12 students max)</div></div>
+          <div class="e3-cm-row"><div class="e3-cm-icon">💰</div><div><strong>Cost:</strong> Free, always</div></div>
+        </div>
+        <div class="e3-values">
+          <div class="e3-value"><div class="e3-value-icon">🤐</div><div class="e3-value-text"><div class="vt">Completely confidential</div><div class="vd">What's shared in the Circle stays in the Circle.</div></div></div>
+          <div class="e3-value"><div class="e3-value-icon">🙅</div><div class="e3-value-text"><div class="vt">Zero pressure to share</div><div class="vd">You can just listen. Showing up is enough.</div></div></div>
+          <div class="e3-value"><div class="e3-value-icon">💚</div><div class="e3-value-text"><div class="vt">No judgment, ever</div><div class="vd">Everyone here is figuring it out too.</div></div></div>
+          <div class="e3-value"><div class="e3-value-icon">🆕</div><div class="e3-value-text"><div class="vt">First-timers always welcome</div><div class="vd">Most people felt nervous — and left glad they came.</div></div></div>
+        </div>
+      </div>
+      <div class="e3-quote">
+        <blockquote>&ldquo;I almost didn&rsquo;t go because I felt awkward going alone. Within 10 minutes I felt completely at ease. I finally feel like I belong here.&rdquo;</blockquote>
+        <cite>Maya, 2nd year — University of Toronto</cite>
+      </div>
+      <div class="e3-cta-wrap"><a class="e3-cta" href="#">Join the Next Circle</a></div>
+      <div class="e3-footer"><p>&copy; 2025 Better Together · <a href="#" style="color:#555552">Unsubscribe</a> · <a href="#" style="color:#555552">Privacy</a></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ EMAIL 4 — YOUR NEXT STEP ══════════════ -->
+<div class="panel" id="panel-4">
+  <div class="brief-col">
+    <div class="brief-card">
+      <div class="brief-tag">Email 04 &mdash; Final Nudge</div>
+      <div class="brief-subject">"I almost didn't come — but I'm so glad I did" 💬</div>
+      <div class="brief-preview">One signup could change your whole week.</div>
+      <div class="brief-divider"></div>
+      <div class="brief-label">Objective</div>
+      <div class="brief-obj" style="margin-bottom:16px">Convert students who haven&rsquo;t yet signed up. Lead with real social proof — a genuine student quote — then create gentle urgency around limited spots for the upcoming events. Warm tone, no pressure tactics, clear CTA.</div>
+      <div class="brief-label">Design directions</div>
+      <div class="brief-directions">
+        <div class="brief-dir">Forest-green topbar with spots indicator</div>
+        <div class="brief-dir">Blush hero — soft, personal urgency</div>
+        <div class="brief-dir">Two student testimonials</div>
+        <div class="brief-dir">Upcoming events summary + final CTA</div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-chip">Day 10 — Final nudge</span>
+      <span class="meta-chip">CTA: Sign Me Up</span>
+      <span class="meta-chip">Social proof + urgency</span>
+    </div>
+  </div>
+  <div class="email-col">
+    <div class="email-frame">
+      <div class="inbox-bar">
+        <div class="inbox-avatar">BT</div>
+        <div class="inbox-from"><div class="from-name">Better Together</div><div class="from-addr">hello@bettertogether.ca</div></div>
+        <div class="inbox-subject-line">"I almost didn't come — but I'm so glad I did"</div>
+      </div>
+      <div class="e4-topbar">
+        <div class="e4-logo">Better Together</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.1em;text-transform:uppercase;">A few spots left this week</div>
+      </div>
+      <div class="e4-nudge-banner">
+        <p>Spots remaining for this week's events</p>
+        <div class="e4-spots">
+          <div class="e4-spot taken"></div><div class="e4-spot taken"></div><div class="e4-spot taken"></div><div class="e4-spot taken"></div><div class="e4-spot taken"></div><div class="e4-spot taken"></div><div class="e4-spot taken"></div><div class="e4-spot open"></div><div class="e4-spot open"></div><div class="e4-spot open"></div>
+        </div>
+      </div>
+      <div class="e4-hero">
+        <div class="e4-eyebrow">Still here for you</div>
+        <h1>One signup could<br>change your whole week.</h1>
+        <p>If you&rsquo;ve been on the fence, this is your nudge. We keep groups small for a reason — and space is going fast this week.</p>
+        <a class="e4-cta-primary" href="#">Sign Me Up</a>
+      </div>
+      <div class="e4-body">
+        <div class="e4-testimony">
+          <div class="tlabel">What students are saying</div>
+          <div class="e4-testi">
+            <div class="tstars">★★★★★</div>
+            <div class="ttext">&ldquo;I almost didn&rsquo;t go because I felt awkward going alone. Within 10 minutes I felt completely at ease. I finally feel like I belong here.&rdquo;</div>
+            <div class="tauthor">Maya R. &mdash; 2nd year, University of Toronto</div>
+          </div>
+          <div class="e4-testi">
+            <div class="tstars">★★★★★</div>
+            <div class="ttext">&ldquo;The outdoor walk felt like such a small thing but it honestly helped so much. I left feeling like myself again for the first time in months.&rdquo;</div>
+            <div class="tauthor">James K. &mdash; 1st year, Humber College</div>
+          </div>
+        </div>
+        <div class="e4-reassure">
+          <span style="font-size:20px;flex-shrink:0;">💚</span>
+          <p><em>No experience needed, no commitment required.</em> Come once and see how it feels. We promise — showing up is the hardest part, and we&rsquo;ll make it worth it.</p>
+        </div>
+        <div class="e4-upcoming-label">Happening this week</div>
+        <div class="e4-upcoming">
+          <div class="e4-event"><div class="e4-event-icon">🌿</div><div class="e4-event-text"><div class="et">[Outdoor Activity] &mdash; [Date &amp; Time]</div><div class="ed">Free · [Location] · A few spots left</div></div></div>
+          <div class="e4-event"><div class="e4-event-icon">🤝</div><div class="e4-event-text"><div class="et">Better Together Circle &mdash; [Date &amp; Time]</div><div class="ed">Free · [Location / Online] · Small group</div></div></div>
+        </div>
+        <div class="e4-final-cta"><a href="#">Sign Me Up &mdash; It Takes 30 Seconds</a></div>
+      </div>
+      <div class="e4-footer"><p>&copy; 2025 Better Together · <a href="#">Unsubscribe</a> · <a href="#">Privacy</a><br>You&rsquo;re receiving this because you subscribed to our student wellness newsletter.</p></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- .main -->
+
+<script>
+function show(n,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+n).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
