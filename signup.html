@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Better Together — Join the Community</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#4a7c59;
+  --forest-light:#e6f0ea;
+  --forest-mid:#b5d0be;
+  --forest-dark:#2e5438;
+  --lavender:#ede8f5;
+  --lavender-dark:#c8bde8;
+  --lavender-mid:#9b8ec4;
+  --blush:#f5eae4;
+  --blush-dark:#dbb9a8;
+  --sand:#f2ede6;
+  --sand-dark:#e0d8ce;
+  --sun:#f5c842;
+  --warm-white:#faf9f7;
+  --white:#ffffff;
+  --charcoal:#2c2c2a;
+  --mid:#6b6b67;
+  --light:#a8a8a3;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--warm-white);font-family:'DM Sans',sans-serif;color:var(--charcoal);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--charcoal);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:58px;border-bottom:1px solid #3a3a38;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--warm-white);letter-spacing:.4px;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:11px;color:#a8a8a3;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:#d0d0ca;}
+.nav-cta{font-size:11px;background:var(--forest);color:#fff;padding:8px 20px;border-radius:4px;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:background .2s;}
+.nav-cta:hover{background:var(--forest-dark);}
+
+/* HERO */
+.hero{background:var(--charcoal);min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;}
+.hero-text{}
+.hero-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest-mid);margin-bottom:20px;font-weight:500;}
+.hero-h1{font-family:'DM Serif Display',serif;font-size:52px;color:var(--warm-white);line-height:1.15;font-weight:400;margin-bottom:24px;}
+.hero-h1 em{font-style:italic;color:var(--forest-mid);}
+.hero-sub{font-size:16px;color:#c8c8c2;line-height:1.8;margin-bottom:36px;max-width:440px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{display:inline-block;background:var(--forest);color:#fff;font-size:13px;font-weight:500;padding:15px 34px;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;transition:background .2s;}
+.btn-primary:hover{background:var(--forest-dark);}
+.btn-ghost{display:inline-block;background:transparent;color:rgba(250,249,247,.5);font-size:13px;font-weight:500;padding:15px 34px;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;border:1px solid rgba(250,249,247,.15);transition:all .2s;}
+.btn-ghost:hover{border-color:rgba(250,249,247,.35);color:rgba(250,249,247,.8);}
+.hero-visual{display:flex;justify-content:center;align-items:center;}
+.hero-pills{display:flex;flex-direction:column;gap:12px;}
+.hero-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:14px;}
+.hero-pill .pill-icon{font-size:22px;flex-shrink:0;}
+.hero-pill .pill-text .pt{font-size:13px;font-weight:500;color:var(--warm-white);}
+.hero-pill .pill-text .pd{font-size:11px;color:#a8a8a3;margin-top:1px;}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.hero-scroll span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#888884;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,#888884,transparent);}
+
+/* FEELING SECTION */
+.feeling{background:var(--forest-light);padding:90px 40px;}
+.feeling-inner{max-width:780px;margin:0 auto;text-align:center;}
+.section-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest);font-weight:500;margin-bottom:18px;}
+.feeling h2{font-family:'DM Serif Display',serif;font-size:38px;color:var(--charcoal);line-height:1.25;margin-bottom:28px;font-weight:400;}
+.feeling h2 em{font-style:italic;color:var(--forest);}
+.feeling p{font-size:16px;color:var(--mid);line-height:1.9;margin-bottom:18px;}
+.feeling p:last-of-type{margin:0;}
+.feeling-divider{width:48px;height:2px;background:var(--forest-mid);margin:36px auto;}
+
+/* FEELINGS GRID */
+.feelings-grid{max-width:1100px;margin:0 auto;padding:0 40px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--forest-mid);}
+.feeling-card{background:var(--forest-light);padding:28px 24px;text-align:center;}
+.feeling-card .ficon{font-size:28px;margin-bottom:12px;}
+.feeling-card h4{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:6px;}
+.feeling-card p{font-size:12px;color:var(--mid);line-height:1.65;}
+
+/* QUOTES */
+.quotes{background:var(--charcoal);padding:80px 40px;}
+.quotes-inner{max-width:1100px;margin:0 auto;}
+.quotes-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#888884;text-align:center;margin-bottom:48px;font-weight:500;}
+.quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.quote-card{background:rgba(255,255,255,.04);border:1px solid #3a3a38;border-radius:10px;padding:28px;}
+.quote-stars{font-size:12px;color:var(--sun);margin-bottom:14px;}
+.quote-text{font-family:'DM Serif Display',serif;font-size:17px;color:var(--warm-white);font-style:italic;line-height:1.6;margin-bottom:18px;}
+.quote-author{display:flex;align-items:center;gap:10px;}
+.quote-avatar{width:32px;height:32px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0;}
+.quote-name{font-size:12px;color:#a8a8a3;}
+.quote-name strong{display:block;color:#c8c8c2;font-weight:500;}
+.quote-featured{border-color:var(--forest);background:rgba(74,124,89,.08);}
+
+/* WHAT YOU GET */
+.what{background:var(--warm-white);padding:90px 40px;}
+.what-inner{max-width:1100px;margin:0 auto;}
+.what-header{text-align:center;margin-bottom:52px;}
+.what-header h2{font-family:'DM Serif Display',serif;font-size:38px;color:var(--charcoal);font-weight:400;margin-bottom:12px;}
+.what-header p{font-size:15px;color:var(--mid);}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.what-card{border-radius:12px;overflow:hidden;border:1px solid var(--sand-dark);}
+.what-card-hero{height:180px;display:flex;align-items:center;justify-content:center;position:relative;}
+.what-card-hero.green{background:var(--forest-light);}
+.what-card-hero.purple{background:var(--lavender);}
+.what-card-body{background:var(--white);padding:28px;}
+.what-card-body .wtag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:10px;}
+.wtag.green{color:var(--forest);}
+.wtag.purple{color:var(--lavender-mid);}
+.what-card-body h3{font-family:'DM Serif Display',serif;font-size:22px;color:var(--charcoal);margin-bottom:10px;font-weight:400;}
+.what-card-body p{font-size:13px;color:var(--mid);line-height:1.75;margin-bottom:18px;}
+.what-items{display:flex;flex-direction:column;gap:8px;}
+.what-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mid);}
+.what-item::before{content:'';display:block;width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.what-item.green::before{background:var(--forest);}
+.what-item.purple::before{background:var(--lavender-mid);}
+
+/* SIGNUP */
+.signup{background:var(--sand);padding:90px 40px;}
+.signup-inner{max-width:640px;margin:0 auto;}
+.signup-header{text-align:center;margin-bottom:48px;}
+.signup-header .stag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest);font-weight:500;margin-bottom:16px;}
+.signup-header h2{font-family:'DM Serif Display',serif;font-size:40px;color:var(--charcoal);font-weight:400;line-height:1.2;margin-bottom:14px;}
+.signup-header h2 em{font-style:italic;color:var(--forest);}
+.signup-header p{font-size:15px;color:var(--mid);line-height:1.8;}
+.signup-form{background:var(--white);border-radius:14px;border:1px solid var(--sand-dark);padding:40px;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--mid);margin-bottom:8px;}
+.form-group input{width:100%;padding:14px 16px;border:1px solid var(--sand-dark);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--charcoal);background:var(--warm-white);outline:none;transition:border-color .2s;}
+.form-group input:focus{border-color:var(--forest);}
+.form-group input::placeholder{color:var(--light);}
+.form-submit{width:100%;padding:16px;background:var(--forest);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:background .2s;margin-top:8px;}
+.form-submit:hover{background:var(--forest-dark);}
+.form-note{text-align:center;margin-top:16px;font-size:12px;color:var(--light);line-height:1.6;}
+.form-note span{margin:0 8px;opacity:.4;}
+.form-success{display:none;text-align:center;padding:40px 20px;}
+.form-success .sicon{font-size:48px;margin-bottom:16px;}
+.form-success h3{font-family:'DM Serif Display',serif;font-size:26px;color:var(--charcoal);margin-bottom:10px;font-weight:400;}
+.form-success p{font-size:14px;color:var(--mid);line-height:1.75;}
+.trust-row{display:flex;justify-content:center;gap:32px;margin-top:36px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--light);}
+.trust-icon{font-size:16px;}
+
+/* FOOTER */
+footer{background:var(--charcoal);padding:48px 40px;text-align:center;}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--warm-white);letter-spacing:.5px;margin-bottom:10px;opacity:.7;}
+.footer-tagline{font-size:13px;color:#888884;margin-bottom:20px;}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:20px;}
+.footer-links a{font-size:11px;color:#888884;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.footer-links a:hover{color:#a8a8a3;}
+.footer-copy{font-size:10px;color:#666660;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Better Together</div>
+  <div class="nav-links">
+    <a href="#">Events</a>
+    <a href="#">Community</a>
+    <a href="#">Resources</a>
+  </div>
+  <a href="#signup" class="nav-cta">Join Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg width="100%" height="100%" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="1440" height="860" fill="#2c2c2a"/>
+      <ellipse cx="1200" cy="200" rx="320" ry="180" fill="#4a7c59" opacity=".06"/>
+      <ellipse cx="200" cy="650" rx="260" ry="150" fill="#4a7c59" opacity=".05"/>
+      <circle cx="900" cy="120" r="3" fill="#4a7c59" opacity=".3"/>
+      <circle cx="1100" cy="300" r="2" fill="#4a7c59" opacity=".2"/>
+      <circle cx="400" cy="200" r="2" fill="#b5d0be" opacity=".2"/>
+      <circle cx="600" cy="700" r="3" fill="#b5d0be" opacity=".15"/>
+      <circle cx="1300" cy="500" r="2" fill="#4a7c59" opacity=".25"/>
+      <!-- Subtle tree silhouettes -->
+      <rect x="1350" y="580" width="6" height="280" fill="#3a3a38"/>
+      <polygon points="1353,440 1320,585 1386,585" fill="#333330"/>
+      <rect x="1380" y="620" width="5" height="240" fill="#333330"/>
+      <polygon points="1382,500 1354,625 1410,625" fill="#3a3a38"/>
+      <rect x="60" y="620" width="5" height="240" fill="#333330"/>
+      <polygon points="62,490 36,625 88,625" fill="#3a3a38"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Better Together · Student Wellness Community</div>
+      <h1 class="hero-h1">You moved away.<br><em>Now what?</em></h1>
+      <p class="hero-sub">Missing home. New faces everywhere. Trying to hold it together between classes. You&rsquo;re not doing this wrong — it&rsquo;s just really hard. Better Together is the community that gets it.</p>
+      <div class="hero-btns">
+        <a href="#signup" class="btn-primary">Join the Community — Free</a>
+        <a href="#what" class="btn-ghost">See What We Do</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-pills">
+        <div class="hero-pill">
+          <div class="pill-icon">🌿</div>
+          <div class="pill-text"><div class="pt">Outdoor Activities</div><div class="pd">Hikes, picnics & weekend walks</div></div>
+        </div>
+        <div class="hero-pill">
+          <div class="pill-icon">🤝</div>
+          <div class="pill-text"><div class="pt">Weekly Group Circles</div><div class="pd">Small, safe, confidential sharing</div></div>
+        </div>
+        <div class="hero-pill">
+          <div class="pill-icon">💚</div>
+          <div class="pill-text"><div class="pt">Real Community</div><div class="pd">Students who genuinely get it</div></div>
+        </div>
+        <div class="hero-pill">
+          <div class="pill-icon">🎓</div>
+          <div class="pill-text"><div class="pt">University Students Only</div><div class="pd">Free to join, no commitment</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FEELING SECTION -->
+<section class="feeling">
+  <div class="feeling-inner">
+    <div class="section-tag">We see you</div>
+    <h2>That feeling you can&rsquo;t quite<br>name? <em>We know it well.</em></h2>
+    <p>It hits at different times. Sometimes it&rsquo;s a Sunday afternoon when your roommate goes home for the weekend and the apartment goes quiet. Sometimes it&rsquo;s watching everyone else seem to know exactly what they&rsquo;re doing when you feel like you&rsquo;re barely keeping up.</p>
+    <p>Homesickness isn&rsquo;t just missing your family&rsquo;s cooking. It&rsquo;s missing the version of yourself who felt at home somewhere. It&rsquo;s rebuilding that from scratch in a new city, with new people, under real pressure.</p>
+    <p>You&rsquo;re not struggling because something is wrong with you. You&rsquo;re struggling because this is genuinely hard — and most people don&rsquo;t talk about how hard it really is.</p>
+    <div class="feeling-divider"></div>
+    <p style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--charcoal);font-style:italic;line-height:1.5;">Better Together exists so you don&rsquo;t have to figure it out alone.</p>
+  </div>
+</section>
+
+<!-- FEELINGS GRID -->
+<div class="feelings-grid">
+  <div class="feeling-card">
+    <div class="ficon">🏠</div>
+    <h4>Homesickness</h4>
+    <p>Missing the familiar — people, places, routines. It&rsquo;s more than nostalgia. It&rsquo;s grief.</p>
+  </div>
+  <div class="feeling-card">
+    <div class="ficon">😶</div>
+    <h4>Loneliness</h4>
+    <p>Surrounded by people but still feeling invisible. You&rsquo;re not the only one who feels this way.</p>
+  </div>
+  <div class="feeling-card">
+    <div class="ficon">😰</div>
+    <h4>Overwhelm</h4>
+    <p>Classes, finances, independence — all at once. The pressure is real and valid.</p>
+  </div>
+  <div class="feeling-card">
+    <div class="ficon">🌱</div>
+    <h4>Hope</h4>
+    <p>That quiet sense that it could get better. It will. And you don&rsquo;t have to wait alone.</p>
+  </div>
+</div>
+
+<!-- QUOTES -->
+<section class="quotes">
+  <div class="quotes-inner">
+    <div class="quotes-label">What students are saying</div>
+    <div class="quotes-grid">
+      <div class="quote-card quote-featured">
+        <div class="quote-stars">★★★★★</div>
+        <div class="quote-text">&ldquo;I almost didn&rsquo;t go because I felt awkward going alone. Within 10 minutes I felt completely at ease. I finally feel like I belong somewhere in this city.&rdquo;</div>
+        <div class="quote-author">
+          <div class="quote-avatar">MR</div>
+          <div class="quote-name"><strong>Maya R.</strong>2nd year · University of Toronto</div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-stars">★★★★★</div>
+        <div class="quote-text">&ldquo;The outdoor walk felt like such a small thing but it honestly helped so much. I left feeling like myself again for the first time in months.&rdquo;</div>
+        <div class="quote-author">
+          <div class="quote-avatar">JK</div>
+          <div class="quote-name"><strong>James K.</strong>1st year · Humber College</div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-stars">★★★★★</div>
+        <div class="quote-text">&ldquo;The Circle is the one place I don&rsquo;t have to pretend everything is fine. It&rsquo;s become the highlight of my week — I can&rsquo;t imagine not going now.&rdquo;</div>
+        <div class="quote-author">
+          <div class="quote-avatar">PS</div>
+          <div class="quote-name"><strong>Priya S.</strong>3rd year · York University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what" id="what">
+  <div class="what-inner">
+    <div class="what-header">
+      <h2>Two ways to feel less alone</h2>
+      <p>Both are free. Both are open to everyone. Come once, come weekly — it&rsquo;s entirely up to you.</p>
+    </div>
+    <div class="what-grid">
+      <!-- Card 1: Outdoor Activities -->
+      <div class="what-card">
+        <div class="what-card-hero green">
+          <svg width="300" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="180" fill="#e6f0ea"/>
+            <rect x="0" y="130" width="300" height="50" fill="#b5d0be" opacity=".5"/>
+            <rect x="55" y="75" width="7" height="57" fill="#4a7c59" opacity=".6"/>
+            <polygon points="58,28 34,80 82,80" fill="#4a7c59" opacity=".7"/>
+            <polygon points="58,44 36,82 80,82" fill="#5a8f6a" opacity=".5"/>
+            <rect x="220" y="88" width="6" height="44" fill="#4a7c59" opacity=".55"/>
+            <polygon points="223,48 202,92 244,92" fill="#4a7c59" opacity=".65"/>
+            <rect x="155" y="95" width="5" height="37" fill="#4a7c59" opacity=".45"/>
+            <polygon points="157,62 140,98 174,98" fill="#6aaa7a" opacity=".5"/>
+            <!-- Three walking figures -->
+            <circle cx="120" cy="112" r="7" fill="#4a7c59" opacity=".75"/>
+            <line x1="120" y1="119" x2="120" y2="142" stroke="#4a7c59" stroke-width="2.5" opacity=".75"/>
+            <line x1="120" y1="127" x2="112" y2="137" stroke="#4a7c59" stroke-width="2" opacity=".75"/>
+            <line x1="120" y1="127" x2="128" y2="136" stroke="#4a7c59" stroke-width="2" opacity=".75"/>
+            <circle cx="142" cy="110" r="7" fill="#5a8f6a" opacity=".7"/>
+            <line x1="142" y1="117" x2="142" y2="140" stroke="#5a8f6a" stroke-width="2.5" opacity=".7"/>
+            <line x1="142" y1="125" x2="134" y2="136" stroke="#5a8f6a" stroke-width="2" opacity=".7"/>
+            <line x1="142" y1="125" x2="150" y2="135" stroke="#5a8f6a" stroke-width="2" opacity=".7"/>
+            <circle cx="163" cy="113" r="7" fill="#4a7c59" opacity=".65"/>
+            <line x1="163" y1="120" x2="163" y2="143" stroke="#4a7c59" stroke-width="2.5" opacity=".65"/>
+            <line x1="163" y1="128" x2="155" y2="138" stroke="#4a7c59" stroke-width="2" opacity=".65"/>
+            <line x1="163" y1="128" x2="171" y2="137" stroke="#4a7c59" stroke-width="2" opacity=".65"/>
+            <!-- Sun -->
+            <circle cx="258" cy="36" r="18" fill="#f5c842" opacity=".3"/>
+            <circle cx="258" cy="36" r="12" fill="#f5c842" opacity=".4"/>
+          </svg>
+        </div>
+        <div class="what-card-body">
+          <div class="wtag green">Outdoor Activities</div>
+          <h3>Get outside. Breathe. Reset.</h3>
+          <p>Weekly activities designed to get you out of your head and into the world. No experience needed — just show up and see how you feel after.</p>
+          <div class="what-items">
+            <div class="what-item green">Nature hikes on local trails</div>
+            <div class="what-item green">Campus picnics &amp; social walks</div>
+            <div class="what-item green">Sunrise walks &amp; weekend bike rides</div>
+            <div class="what-item green">Held after class &amp; on weekends</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2: Group Circle -->
+      <div class="what-card">
+        <div class="what-card-hero purple">
+          <svg width="300" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="180" fill="#ede8f5"/>
+            <!-- Circle of people (top view) -->
+            <circle cx="150" cy="90" r="52" fill="none" stroke="#c8bde8" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <!-- Figures in circle -->
+            <circle cx="150" cy="40" r="9" fill="#9b8ec4" opacity=".7"/>
+            <circle cx="193" cy="65" r="9" fill="#b5aad6" opacity=".65"/>
+            <circle cx="193" cy="115" r="9" fill="#9b8ec4" opacity=".6"/>
+            <circle cx="150" cy="140" r="9" fill="#c8bde8" opacity=".7"/>
+            <circle cx="107" cy="115" r="9" fill="#9b8ec4" opacity=".65"/>
+            <circle cx="107" cy="65" r="9" fill="#b5aad6" opacity=".6"/>
+            <!-- Connection lines -->
+            <line x1="150" y1="49" x2="184" y2="65" stroke="#c8bde8" stroke-width="1" opacity=".5"/>
+            <line x1="193" y1="74" x2="193" y2="106" stroke="#c8bde8" stroke-width="1" opacity=".5"/>
+            <line x1="184" y1="115" x2="159" y2="131" stroke="#c8bde8" stroke-width="1" opacity=".5"/>
+            <line x1="141" y1="131" x2="116" y2="115" stroke="#c8bde8" stroke-width="1" opacity=".5"/>
+            <line x1="107" y1="106" x2="107" y2="74" stroke="#c8bde8" stroke-width="1" opacity=".5"/>
+            <line x1="116" y1="65" x2="141" y2="49" stroke="#c8bde8" stroke-width="1" opacity=".5"/>
+            <!-- Center heart -->
+            <text x="150" y="96" text-anchor="middle" font-size="18" fill="#9b8ec4" opacity=".6">💚</text>
+          </svg>
+        </div>
+        <div class="what-card-body">
+          <div class="wtag purple">Weekly Group Circle</div>
+          <h3>Say the thing you haven&rsquo;t said.</h3>
+          <p>A small, confidential group where students share what&rsquo;s really going on. Homesickness, stress, relationships, uncertainty — all of it is welcome here.</p>
+          <div class="what-items">
+            <div class="what-item purple">8–12 students max per session</div>
+            <div class="what-item purple">Completely confidential</div>
+            <div class="what-item purple">No pressure to share — listening is enough</div>
+            <div class="what-item purple">Facilitated, warm, zero judgment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNUP FORM -->
+<section class="signup" id="signup">
+  <div class="signup-inner">
+    <div class="signup-header">
+      <div class="stag">Join the community</div>
+      <h2>Ready to feel<br><em>at home again?</em></h2>
+      <p>Join Better Together for free. We&rsquo;ll send you upcoming events, resources, and a warm welcome from students who&rsquo;ve been exactly where you are.</p>
+    </div>
+    <div class="signup-form" id="signup-form-wrap">
+      <div id="form-fields">
+        <div class="form-group">
+          <label for="fname">Your first name</label>
+          <input type="text" id="fname" placeholder="e.g. Maya" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="email">Your email address</label>
+          <input type="email" id="email" placeholder="e.g. maya@university.ca" autocomplete="email">
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">Join Better Together — It&rsquo;s Free</button>
+        <p class="form-note">No spam, ever. <span>·</span> Unsubscribe anytime. <span>·</span> Free, always.</p>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="sicon">💚</div>
+        <h3>Welcome to the community.</h3>
+        <p>You&rsquo;re in, <strong id="success-name">friend</strong>. Check your inbox for a warm welcome from us — and keep an eye out for our first email with upcoming events near you.<br><br>You took the first step. We&rsquo;re really glad you&rsquo;re here.</p>
+      </div>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span class="trust-icon">🔒</span> Completely confidential</div>
+      <div class="trust-item"><span class="trust-icon">💰</span> Always free</div>
+      <div class="trust-item"><span class="trust-icon">🎓</span> University students only</div>
+      <div class="trust-item"><span class="trust-icon">🤝</span> No commitment required</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Better Together</div>
+  <div class="footer-tagline">A student wellness community · Free · Confidential · No pressure</div>
+  <div class="footer-links">
+    <a href="#">Events</a>
+    <a href="#">Community</a>
+    <a href="#">Resources</a>
+    <a href="#">Privacy</a>
+    <a href="#">Unsubscribe</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 Better Together · hello@bettertogether.ca</div>
+</footer>
+
+<script>
+function handleSubmit(){
+  var name = document.getElementById('fname').value.trim();
+  var email = document.getElementById('email').value.trim();
+  if(!name){alert('Please enter your first name.');return;}
+  if(!email || !email.includes('@')){alert('Please enter a valid email address.');return;}
+  document.getElementById('success-name').textContent = name;
+  document.getElementById('form-fields').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+</body>
+</html>
